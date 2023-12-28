@@ -1,0 +1,686 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>VRizzards</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6c4aff80-0885-4303-95dd-007fa3fb311f" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🧙🏼‍♂️</span></div><h1 class="page-title">VRizzards</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/rocket_gray.svg" style="width:14px;height:14px"/></span>Finished</th><td>Feb 2024</td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/gear_gray.svg" style="width:14px;height:14px"/></span>Engine &amp; Language</th><td><span class="selected-value select-value-color-pink">Blueprints</span><span class="selected-value select-value-color-purple">Unreal</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/briefcase_gray.svg" style="width:14px;height:14px"/></span>Roles</th><td><span class="selected-value select-value-color-blue">Game Dev</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/tag_gray.svg" style="width:14px;height:14px"/></span>Tags</th><td><span class="selected-value select-value-color-green">Fighting</span><span class="selected-value select-value-color-yellow">Uni</span><span class="selected-value select-value-color-green">VR</span></td></tr><tr class="property-row property-row-number"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/groups_gray.svg" style="width:14px;height:14px"/></span>Team Size</th><td>5</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/clock-alternate_gray.svg" style="width:14px;height:14px"/></span>Development Period</th><td>2 months</td></tr></tbody></table></header><div class="page-body"><p id="7dd3974c-4ed3-47bb-89dc-a7a25db8f483" class="">⬅️ Back to the <a href="../../Portfolio%2096ace5e3bf2a452f8176fc2dc7f16779.html"><span class="icon">🚀</span>Portfolio</a></p><ul id="65ef06a2-8c4d-439a-ac49-5b4b0dd34b44" class="toggle"><li><details open=""><summary>🧭 <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Quick Links</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></summary><nav id="ffedc821-2244-4f37-b046-48122ad88640" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3722a5d2-8e32-4193-94ff-4ae5da92ec34">Concept</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c27bde29-3507-49c8-92f8-ef271f0fa969">Images &amp; Videos</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7cbabeac-35b3-4da3-81a6-e00f016df68b">Team</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ccd83d00-9cee-4461-b338-ad0df62c7799">Contributions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#157018a6-0495-4763-a829-7525b756f880">Process</a></div></nav></details></li></ul><h2 id="3722a5d2-8e32-4193-94ff-4ae5da92ec34" class="block-color-purple_background">Concept</h2><hr id="a73c64f7-fb59-4e96-95dc-702a18bbcf44"/><div id="c955990f-d999-4262-80a8-9af41f85ef4a" class="column-list"><div id="06990f31-3048-4d7d-a509-08b253c225d2" style="width:50%" class="column"><figure id="df9db08b-6ed3-4bab-9d29-505bb9871b1c" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled.png"><img style="width:1668px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled.png"/></a><figcaption>Placeholder image [<a href="https://de.wallpapers.com/hintergrundbild/zukound-aang-meister-des-feuers-und-lufts-qbmvt1schjibo77v.html">source</a>]</figcaption></figure></div><div id="190b2b57-f38a-48f5-a057-2e98205c2e2b" style="width:50%" class="column"><p id="29d80f42-2f6e-420e-8811-81e0ed7c516d" class=""><mark class="highlight-purple"><strong>VRizzards</strong></mark><mark class="highlight-purple"> </mark>was made in the course “Games with Motion” at TUM which focusses on games that require the player to move in a certain way and try new input mechanics. It is a VR fighting game challenging the player to summon element spells with a specific pose and fighting mystical enemies in a circular arena similar to games like <a href="https://www.meta.com/de-de/experiences/pcvr/2083635558323899/">Rumble</a>. There are 3 elements: wind, earth and thunder. Additionally, the player has access to a shield to block the enemy’s attacks, activated by yet another gesture.</p><p id="6d7ef9c8-4d20-4ff3-b330-29977af973d3" class="">Despite we took some inspiration from the series “Avatar: the last air bender”, we decided on a magical fantasy setting, so we can cast magic spells on the enemies.</p><p id="7f7ad336-24be-44c6-8b51-52f3bc362d31" class="">The game’s kickoff was in December 2023, so this page will be filled with more information later :)</p><p id="c846005a-1b7c-4c7b-8a0b-4a2ee1c1eed4" class="">We will present <mark class="highlight-purple"><strong>VRizzards </strong></mark><mark class="highlight-default">at the TUM FAR DemoDay on 6th February, 2024.</mark></p><p id="d0b42981-50e7-4dc4-9494-941c8c38d536" class="">
+</p></div></div><h2 id="c27bde29-3507-49c8-92f8-ef271f0fa969" class="block-color-purple_background">Images &amp; Videos</h2><hr id="a25342c0-1d1b-46b4-aa53-22c91a2e4a26"/><p id="e7a5738a-09f1-4533-a0ea-62495764194a" class=""><code>Coming soon :)</code></p><h2 id="7cbabeac-35b3-4da3-81a6-e00f016df68b" class="block-color-purple_background">Team</h2><hr id="c2796e07-5f2d-4129-9dcd-63997d83d6cb"/><div id="143e8639-c089-4ec7-812a-f8d012da50e8" class="column-list"><div id="3dc5066b-ad5f-44ce-8e0a-e75bac717210" style="width:50%" class="column"><figure id="3d31d877-6916-4cb6-af5b-3bf28b90a71a" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Tasks.jpg"><img style="width:528px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Tasks.jpg"/></a><figcaption>Screenshot of our Miro board</figcaption></figure></div><div id="c61c1bf9-0ef3-4218-9ddf-08fd887a47da" style="width:50%" class="column"><ul id="6d8c7937-bda5-4d07-8493-15ddafdacc2a" class="bulleted-list"><li style="list-style-type:disc">Bahy Nguyen: Visual effects (shaders)</li></ul><ul id="f1dab671-c3ce-4da0-ba96-7b8e6e8eb375" class="bulleted-list"><li style="list-style-type:disc"><a href="https://chriskohler.net/">Chris Kohler</a>: Music, sound effects, FMOD integration</li></ul><ul id="56f732e3-2d0f-4797-8b95-c77e36839601" class="bulleted-list"><li style="list-style-type:disc">Kerstin Pfaffinger (me): Motion Tracking, VR integration</li></ul><ul id="f82938a6-e544-44a1-a043-c5c589bfb08c" class="bulleted-list"><li style="list-style-type:disc">Michl Bayer: Motion Tracking, VR integration, UI</li></ul><ul id="ed80983d-a3f7-4e45-a16e-1f3556d2d529" class="bulleted-list"><li style="list-style-type:disc">Sebastian Geheeb: Enemy AI, game logic</li></ul><p id="7b067223-236e-4911-82ae-018f036cc3bd" class="">
+</p></div></div><h2 id="ccd83d00-9cee-4461-b338-ad0df62c7799" class="block-color-purple_background">Contributions</h2><hr id="18430b76-381c-40e1-9d89-cb76e1370797"/><ul id="0005d9c5-d4c8-45f5-b09a-3eaebaf74138" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-purple"><strong><a href="VRizzards%206c4aff800885430395dd007fa3fb311f.html">Posture Recognition</a></strong></mark><mark class="highlight-purple"><strong>: </strong></mark><mark class="highlight-default">The central aspect of the game is to detect the poses the player does and respond with the corresponding actions in game.</mark></li></ul><ul id="08a447f3-70cc-4991-9daf-8568feaf0210" class="bulleted-list"><li style="list-style-type:disc"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f.html"><mark class="highlight-purple"><strong>Attack Cone</strong></mark></a>: A cone-shaped trigger box defining which enemy to aim at to assist the player.</li></ul><ul id="86152f22-fb52-41fb-95e6-3fe2ed040183" class="bulleted-list"><li style="list-style-type:disc"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f.html"><mark class="highlight-purple"><strong>Lightning Element</strong></mark></a><mark class="highlight-purple"><strong>:</strong></mark> The default attack for the lightning element is to spawn a thunder cloud above the enemy’s head and strike them with a thunder bolt.</li></ul><p id="9016542d-9470-4667-be9e-4e79e21a834c" class="">
+</p><h2 id="157018a6-0495-4763-a829-7525b756f880" class="block-color-purple_background">Process</h2><hr id="1abd2c74-4b3d-4b44-86f8-d6a76a903753"/><p id="1e3a3cff-3ed4-4df8-867f-9840ac0a7bcc" class="">For all of us, it was the first time using the Unreal Engine, so we spent some time getting familiar with the engine and blueprints before the project kickoff. After we decided on the game concept, we started assigning the tasks and created a mood board for us to visualize the idea. More importantly, it provided Chris with a general impression of the game, so he could grasp the game’s feel and mood to start composing:</p><figure id="6bf4f9fb-dfeb-4489-b289-0c23fba4a865" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Final_Moodboard.jpg"><img style="width:1517px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Final_Moodboard.jpg"/></a></figure><p id="8f9c88bf-a747-4e04-a22b-8a3378f76327" class="">We also defined what our MVP would be, wrote down some optional nice-to-have features and made a coarse timeline with milestones:</p><figure id="c39331fd-d977-4140-8b63-f7ee750a59c2" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Plan.jpg"><img style="width:1104px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Plan.jpg"/></a></figure><p id="06cfa03f-e942-4d76-b3dc-b04160275c51" class="">
+</p><p id="b1ade7d5-0253-48c9-a0cf-143809292b54" class=""><mark class="highlight-purple"><strong>Posture Recognition</strong></mark></p><p id="ab0d8263-3cdc-4e8f-961b-467a0a309440" class="">We wanted to make the postures as easily distinguishable as possible, so we defined 3 areas based on the position of the hand controllers relative to the VR headset:</p><figure id="e8c2d66a-7498-45cb-bad1-a64711ca6818" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%201.png"><img style="width:432px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%201.png"/></a><figcaption>3 areas for posture tracking</figcaption></figure><p id="2a47d18b-d707-4a9b-9533-37f511c403d7" class="">Anything above the HMD (we call it “Cam” because that’s the name of the object in Unreal), is in the first area. The area below is divided further. If the distance between the hand controller and the cam is greater than some threshold, then they are in area 3, in 2 otherwise.</p><p id="22b8d90d-54ea-4f73-918e-422f48c816fd" class="">As we had hardly any experience with both VR and Unreal, we printed the distances to determine the optimal threshold for defining the lowest area. For now, we hardcoded it based on the distance that felt convenient with our body heights. We plan to later add a dynamic way to compute this value during the tutorial.</p><p id="a8d83dec-f328-426f-9ea2-8380f7cc17f4" class="">To represent the areas, we defined a simple enum holding <code>Top</code>, <code>Center</code> and <code>Bottom</code>. We than matched each combination of left and right position to a posture. We have 3 elements in the game the player can summon: Lightning, Rock and Wind. As a start, we defined <code>Top-Top</code> as Lightning, <code>Center-Center</code> as Wind and <code>Bottom-Bottom</code> as Rock. You can also see the poses in our mood board:</p><figure id="63c59181-86f1-4be6-a350-e875b87315d9" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%202.png"><img style="width:288px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%202.png"/></a></figure><p id="eb815868-9296-4946-b8fc-4c3761f2d8c6" class="">After we managed to read out the current element, we wanted to give the player some control over when to grab an element. This way, we could avoid the player summoning a rock when accidentally dropping their hands below the threshold. So we bound the element selection to a button on the hand controllers and used the corresponding action node.</p><p id="289a9f02-5b70-4123-81b8-35361905562e" class="">After some playing around, we wanted to be able to shoot something and see if it makes fun. We discovered the built-in <code>Projectile</code> blueprint and used that to shoot our elements. We found it most intuitive to shoot with the index finger button, because that is were gun triggers are placed normally. We gave it to some friends and they confirmed that it was fun and intuitive.</p><p id="422cd42c-27f7-4a9b-9db2-c1667c3ebac2" class="">The next step was to refine the postures and requirements a bit more. At that point, the elements could be grabbed and shot from any hand position as long as they both were in the same area. Especially for wind (<code>Center-Center</code>), it was way too easy to spam projectiles. We additionally opted for having some kind of idle state for the hands, were no element could be grabbed. Like a default position, the player has to exit in order to get an element. That’s why we changed the wind posture to some thing like a T-pose. The naive approach was to simply calculate the distance of both hands on the <code>y</code> axis and that actually worked so well that we decided to keep it. The advantage from only comparing <code>y</code> (so the axis pointing to the right) is that it lets some space for inaccurate positioning of the hands. In general, we wanted to keep the requirements for any action as forgiving as possible to keep the player in the flow of the game and giving them the sense of mastering the mechanics.</p><ul id="37c6b61b-ea53-4fd4-b731-e361f7f85ff2" class="toggle"><li><details open=""><summary><em><em><em>[Event Graph]</em></em></em> CheckElement (done together with Michl)</summary><figure id="609f987f-e5d2-4748-8782-d0b130b54f70" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%203.png"><img style="width:1571px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%203.png"/></a><figcaption>Checking for the current pose</figcaption></figure><figure id="cbb5cc97-2a67-432f-b04f-4069301b36b8" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%204.png"><img style="width:1884px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%204.png"/></a><figcaption>“Center” branch: additional requirement for summoning wind element</figcaption></figure></details></li></ul><p id="7d8b2fba-972d-4df4-bda9-58fd6f6fa628" class="">Furthermore, we added the constraint that shooting a wind projectile was only possible if the hands were close enough to create a Kamehameha-like movement:</p><figure id="ed678916-e47e-47c9-8f8f-1de347721403" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled.jpeg"><img style="width:474px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled.jpeg"/></a><figcaption><a href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/437895b4-571f-45dd-b983-5851a9734a4d/d2wa8b7-0398f933-597a-48c4-95b5-bec2c6e5d749.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQzNzg5NWI0LTU3MWYtNDVkZC1iOTgzLTU4NTFhOTczNGE0ZFwvZDJ3YThiNy0wMzk4ZjkzMy01OTdhLTQ4YzQtOTViNS1iZWMyYzZlNWQ3NDkuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.2nIuMCiTZfEI2y2qFR6RWLv4MkWNInGFpgAKu2qbsqs">image source</a></figcaption></figure><p id="a1a39b1e-c944-408b-a27a-b7591c0196dc" class="">While playing, we intuitively also shot the other two elements from the center, but we didn’t restrict the ability to shoot in code as we wanted to give the player the ability to shoot lightning and rock from any position.</p><p id="2e05f6d6-8b70-4c5f-80d1-471e79c9e83a" class="">The next change we made was only requiring one hand to press either the summon or shoot button in order to start that action. This also let room for inaccuracies like not pressing both buttons in the same frame.</p><p id="34f06217-a5fb-480d-aa05-5368df219c80" class="">Programming and testing had already sparked a lot of great ideas for additional attacks and postures, but we wanted to first finish all the basic attacks for the elements. We felt like having a default shooting action shared by all elements gave new players less things to learn and think about. But we noted down all our ideas to be able to add them later after reaching our MVP goals. We also used this as general overview over the features and the progress we made:</p><figure id="42cb2650-e666-4202-9112-f7df67385f66" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%205.png"><img style="width:1008px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%205.png"/></a><figcaption>Spell table at that point in development</figcaption></figure><p id="cbef8755-d1c2-476a-8821-e2d3b3179089" class="">
+</p><p id="24b7526c-236d-4ef5-a713-7cf9fdcf636b" class="">
+</p><p id="594f512d-80dd-4559-abc0-5562f0cfa378" class="">
+</p><p id="587c4db1-270e-4eb5-80c4-355be0a139a2" class=""><mark class="highlight-purple"><strong>Attack Cone</strong></mark></p><p id="8b9479e3-ba00-47e6-9ca5-31b20823ee14" class="">During testing and coding, we discovered a major challenge: aiming with two pointers, being the two hands. As it seems, it is not that obvious in which direction to shoot an element projectile if you are not aiming in one direction (as when e.g. using the HMD and look in the desired direction), but rather define a broader space to fire at between your hands. Aiming with the two hands seemed the most intuitive for us, as the final vision is to change the shooting action from a button click to some push action done by quickly moving your hands forward. Then it only makes sense to push the projectiles in the direction the player pushed in. We felt that taking the averaged direction between the hands would be the most reasonable solution to this.</p><p id="2882ccd3-882a-46b6-8142-c9e06902878a" class="">Since our first project meeting, we were talking about some kind of aiming assistant for the game. The naive approach would be to just cast a ray and see which enemy was hit, but that would not account for any imprecisions in shooting. On the contrary, it would even be redundant as we solved the “hitting an enemy”-problem with collisions between the projectiles and the players.</p><p id="737c737e-ceee-49c9-aa69-0ea95b528e4a" class="">After one of our coding sessions in university, I took the train home with Michl and he came up with the idea to have some kind of collider area in front of the player which detects all enemies in the approximate direction the player aims at. We would the steer the projectiles to the enemy that was most likely targeted by the player. The initial idea was to use a cylindric or cuboid trigger area, but we eventually decided on using a cone shape as it approximates the area the best.</p><p id="6a6bf8f0-b8cd-42d1-a708-58c73f1f0433" class="">I was so hooked by that plan, that I immediately started working on the cone the next day.</p><p id="a0ae2f37-472b-4f11-8c0f-8ddd67e9dd12" class="">As I said earlier, we decided on aiming with two hands. So I tried to come up with some way to calculate where the player actually wants to shoot at. And then orient the attack cone so it captures all enemies in the area spanned by the hand vectors. I first focused on the shooting direction. As I always do when it comes to planning out how to implement something (especially if it involves math), I briefly sketch it in OneNote:</p><div id="ded16256-3910-48de-aec9-9cbaaa36881c" class="column-list"><div id="7263c86a-ea83-42ac-9e4a-74bf9b7f13b9" style="width:50%" class="column"><figure id="f7776824-8c9e-49ba-8622-e5f29d44771e" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%206.png"><img style="width:432px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%206.png"/></a><figcaption>First sketch and initial idea. Yellow and blue are the hand positions relative to the HMD and red is the middle vector we want to compute.</figcaption></figure></div><div id="5286ad60-7ad9-4758-9e97-42c371dfab16" style="width:50%" class="column"><figure id="00763d93-752d-45ab-bad4-34c0b53135a0" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%207.png"><img style="width:336px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%207.png"/></a><figcaption>Further thoughts on how to handle trickier hand positions (left hand is further away than right one).</figcaption></figure></div></div><p id="b6c70b89-3ac5-4e88-91a4-d891687b9de3" class="">This helps me to visualize and better understand the problem. Additionally, I can detect misleading solutions much quicker. A bonus is that I am able to store my thoughts and ideas somewhere, so I won’t forget them.</p><p id="33712101-278a-4d13-8104-240008afd6b2" class="">Here, I started by drawing a simple 2D coordinate system with vectors pointing to the hand positions (yellow and blue). 2D is sufficient as we are only interested in the directions on the XY plane to determine the forward vector of the element projectile to spawn and shoot. I then went ahead and drew in the solution vector (red) to see if I can derive any mathematical connection to the hand vectors. I quickly realized that the middle vector lies on the diagonal of the parallelogram defined by the hand vectors. In the formula I put there, it is exactly half of the diagonal, but I later normalized it to serve only as direction indicator and not as some force, so the exact length doesn’t matter.</p><p id="eac7c2ac-c2f7-451d-9837-ab664f654234" class="">So the first approach was born. After that, I continued by thinking of any edge cases that the formula couldn’t compute correctly. I thought of the different constellations the hands could end up when shooting and what I would expect the direction to be in that situation. This is where the second screenshot comes into play. If one of the hands is further in front than the other, the direction would be pointing more in the direction of the nearer hand. So I needed to make the calculation independent of the distances from the player to their hands. And the go-to way to eliminate any factors in vector lengths is to normalize them. That, in fact, yielded very nice results.</p><ul id="39b83e61-546a-493a-a8d3-3efbce3e2a47" class="toggle"><li><details open=""><summary><em><em><em><em><em><em><em><em><em><em><em><em><em><em>[Event Graph] </em></em></em></em></em></em></em></em></em></em></em></em></em></em>GetShootDirection</summary><figure id="3f04ad5a-7e0e-42e8-b6fb-6b815bd0ecc9" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%208.png"><img style="width:1874px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%208.png"/></a></figure><figure id="f32dc45a-1904-4d24-9493-13dfc8fda972" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%209.png"><img style="width:1637px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%209.png"/></a></figure></details></li></ul><p id="199497eb-de87-48f5-88ae-8e454ad571a2" class="">Now it was time to add the cone. For this I, again, started by sketching. I then created a cone trigger object in Unreal and added it to the VR pawn: </p><div id="ac57458d-43cc-40ce-9571-dfc0912698eb" class="column-list"><div id="e4f9651f-256a-453d-8013-da153469859a" style="width:50%" class="column"><figure id="a86eed2c-26ad-4e37-909a-1c406019557c" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2010.png"><img style="width:432px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2010.png"/></a><figcaption>Top-down view of what the cone should look like</figcaption></figure></div><div id="4d2a9928-6556-4e52-904d-6ba70c5d0fba" style="width:50%" class="column"><figure id="9fcc2eee-76b2-410f-bd77-3f51143d13a8" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2011.png"><img style="width:1262px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2011.png"/></a><figcaption>VRPawn with Camera and cone example in Unreal</figcaption></figure></div></div><p id="01bf2416-f2c9-46df-bfc7-7cfe4db0b797" class="">I began with positioning the cone correctly. I thought I simply needed to make it child of the player to make it move and orient with them. But yet again, the fact that we have two hands caused some problems. I needed to position the cone in the middle of the two at any time. Some scribbling later, I found that I could just take the average of the two hand positions and set the cone’s location to the resulting vector.</p><p id="f8c53f28-d081-4ce7-9b31-d6ec559090a7" class="">I struggled with orienting the cone correctly though, it always seemed a bit off. I found out that one can change an object’s pivot point in Unreal, but as I was working in the cone blueprint itself, I didn’t manage to pull it off. I gave up on that as it was a dead end for me, and tried something different. I made the cone child of an invisible sphere acting as the pivot point. So I changed the blueprint event graph to rotate and position the sphere instead of the cone. That fixed it!</p><figure id="1dd12cc3-7d6c-4ade-a207-5d6eff066054" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2012.png"><img style="width:768px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2012.png"/></a><figcaption>Adding an invisible pivot point as parent for the cone</figcaption></figure><p id="8537d239-da49-4621-8b73-f80fd4b2c4bd" class="">Till now I was simply printing a message to the screen log any time the cone overlapped with any enemy actor. The next step was to actually store the enemy that is most likely to be targeted. I created a variable for this that is written any time an overlap was detected. That meant that the projectiles were always targeting the last enemy that was in the cone, which wasn’t always the intuitive choice.</p><figure id="2115d05e-bcde-4a74-b49d-17a400e90a18" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2013.png"><img style="width:1056px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2013.png"/></a><figcaption>Illustration of the problem: If only the last enemy to enter the cone is stored, attacks might target an enemy that is only slightly in sight.</figcaption></figure><p id="62037573-97d5-47e5-95ef-f8bf0fcc860a" class="">After some discussions with the others, we decided on storing a list of enemies that are currently in the cone. When the player hits the shoot button, I will choose the enemy that has the smallest distance to the player (being the HMD actor) as target for the homing projectiles (provided by Unreal). If the list was empty, I would simply take the middle vector and shoot in that direction without controlling the projectile’s movement further.</p><figure id="5b3cfc3d-8e46-4629-8f82-4e889b274c09" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2014.png"><img style="width:444px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2014.png"/></a><figcaption>In this case choose the lower cube as target</figcaption></figure><p id="4eb025aa-37ab-4662-a5e2-813b8740201c" class="">Here is how I implemented the cone using in blueprints as described in the past sentence:</p><ul id="5f45bba3-ac47-41b3-906c-b84088e9d083" class="toggle"><li><details open=""><summary><em><em><em>[Event Graph] </em></em></em>AttackCone: selectedEnemies list</summary><figure id="88d4139e-e8fd-4d63-ad86-b6504d0980bb" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2015.png"><img style="width:1827px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2015.png"/></a><figcaption>Add all enemies to the list that overlap with the cone.</figcaption></figure><figure id="28c7fde2-b677-4870-9941-66bd696c3555" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2016.png"><img style="width:1152px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2016.png"/></a><figcaption>Remove all enemies of the list that are no longer overlaping</figcaption></figure></details></li></ul><ul id="69c3d1bb-0e89-4370-8f52-cc7aa8e8c2f7" class="toggle"><li><details open=""><summary><em><em><em><em><em><em><em><em><em><em><em><em><em>[Event Graph]</em></em></em></em></em></em></em></em></em></em></em></em></em> AttackCone: updating location and rotation</summary><figure id="00759352-dce2-4c93-bb1b-3fb183b68b34" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2017.png"><img style="width:1882px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2017.png"/></a><figcaption>Position and orient the cone according to the hand transformations</figcaption></figure></details></li></ul><p id="ae284195-d32f-43ff-81a4-bdf53cc437a7" class="">After I was happy with the cone, I let my friends play it and asked for their feedback. While watching them play, I discovered that they often thought they would aim at an enemy but were missing. That often happened with lightning, because they were shooting with their hands still decently high and the cone didn’t detect the enemies because they were simply too short. To mitigate that, I adjusted the cone’s vertical scale, so it would catch all enemies regardless of their height.</p><p id="07d3f14b-b3c3-4e56-abde-45fc5bcceba1" class="">A future addition I will have to make is to enlarge the cone in the <code>x</code> axis so that it reaches from one side of the arena to the other. But I will have to wait for the level blockouts to be finished. I assume we will have a <code>public</code> variable for the current arena’s diameter. But for now, I’m done with the cone :) </p><p id="ef83518b-312c-4077-a3fa-dc53b0fd8c3a" class="">
+</p><p id="7332b5a0-6777-499e-9991-1338a3f7228e" class="">
+</p><p id="457c5f37-61f0-4192-a830-dbf8e1fab268" class=""><mark class="highlight-purple"><strong>Lightning Projectiles</strong></mark></p><p id="964045d2-9a5d-4ee3-ac09-12156c9c98db" class="">Michl had basically done the core of both rock and wind projectiles. I extended those to include homing projectiles and made some other small additions. I also helped a lot with the maths.</p><p id="ec251c4e-6f61-4077-a138-3edbc06048cc" class="">I had just finished the <a href="VRizzards%206c4aff800885430395dd007fa3fb311f.html">attack cone</a>, which was mainly important for the lightning attack because here, the player won’t actually shoot some projectile, but rather spawn a thunder cloud above the enemy’s head and strike him with a thunder bolt. That’s why we needed the cone in the first place. So after that was done, I went on implementing the lightning attack.</p><p id="122f9ef9-7bbc-4d0e-9263-d6cc4d860a85" class="">Unlike wind and rock, the event graph canvas for handling lightning was completely blank, so I had to start from scratch. I took some inspiration from what Michl has done with the other elements concerning how to spawn a projectile and set is speed and moving direction. It actually helped me a lot to write some kind of pseudo code by hand before adding any blueprint nodes. By taking a step away from the concrete implementation, I could plan the logical process of what I wanted to achieve and then turn that into actual nodes. This is what I wrote down:</p><figure id="8e827c9b-a114-4cba-9b71-2049c77d23bf" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2018.png"><img style="width:528px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2018.png"/></a><figcaption>Pseudo code for lightning attack</figcaption></figure><p id="4ceb05e1-4dc0-4dbe-9873-b5dde8699367" class="">The <code>else</code> block of the code was quite simple to turn into blueprint nodes as the operations were quite basic. The <code>if</code>, however, required a bit of investigation.</p><p id="2fce768b-0859-492a-8a81-98a8a9d5672c" class="">There apparently is no thing like <code>null</code> in Unreal blueprints, so I first added a <code>noEnemy</code> variable representing an empty enemy. I returned that in my <code>GetClosestEnemyInCone</code> method if no enemy was in the shooting area. Then I realized that there’s a node called <code>IsValid</code> checking if the input is, well, valid. So I could remove the <code>noEnemy</code> variable and always return something from my <code>selectedEnemies</code> list even if it is empty.</p><ul id="3e62ab09-a646-4f0b-8f0d-a27a183703b8" class="toggle"><li><details open=""><summary><em><em><em><em><em><em><em><em><em>[Event Graph]</em></em></em></em></em></em></em></em></em> GetClosestEnemyFromList</summary><figure id="215bbc84-dcd6-46b7-ba32-20ac82c81fcf" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2019.png"><img style="width:1874px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2019.png"/></a><figcaption>Initialization </figcaption></figure><figure id="b8972ba5-d092-432b-a366-a07faf665265" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2020.png"><img style="width:1820px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2020.png"/></a><figcaption>Loop through the list and compute minimum distance + respective index</figcaption></figure><figure id="3123c0bb-4bdd-4b58-8614-fda17b40bf5e" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2021.png"><img style="width:672px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2021.png"/></a><figcaption>Return the enemy with the minimum distance</figcaption></figure></details></li></ul><p id="6078f011-a89c-4f94-a56d-7181a6ec6482" class="">For the “miss the enemy” part I first had to think about how missing should actually be represented in this situation. I definitely wanted to still spawn a thunder cloud, but not over an enemies head, but rather somewhere in the direction the player was aiming. As I had no idea what the arena would look like eventually, I scaled the normalized aiming direction by some offset value and instantiated the cloud at a fixed height at the resulting position. I will come back later and adjust the logic accordingly. This is how it looks right now:</p><p id="0ef4c01a-a28b-4944-99e4-08f4b149c8e9" class=""><code>Coming soon :)</code></p><p id="efadfd22-6e53-4ee6-b4a3-47b9d5343d08" class="">To round it up, I added some comments to the nodes for the others so that they will be able to understand the event graph more easily.</p><ul id="4ce47425-57bc-4ef6-9b1a-9e1f6c9f5eb1" class="toggle"><li><details open=""><summary><em><em><em><em><em><em><em><em><em><em><em><em><em>[Event Graph]</em></em></em></em></em></em></em></em></em></em></em></em></em> HandleLightning</summary><figure id="d840312c-4c0b-4919-ba95-fa5394f866dd" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2022.png"><img style="width:1688px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2022.png"/></a><figcaption>Pressed L/R are set outside if the shot button of the left/right controller was pressed.</figcaption></figure><figure id="cad34e0b-0e94-4bf7-8951-192fa649c9eb" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2023.png"><img style="width:1468px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2023.png"/></a></figure><figure id="cd31ce73-5ff0-4f5c-80b9-3f411314bfba" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2024.png"><img style="width:1293px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2024.png"/></a></figure><figure id="edd55ad7-c17d-49ce-b8c6-31f5ac302101" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2025.png"><img style="width:1685px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2025.png"/></a></figure><figure id="5e864d79-f9ed-4ab4-ad68-9a2124f73dfb" class="image"><a href="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2026.png"><img style="width:1801px" src="VRizzards%206c4aff800885430395dd007fa3fb311f/Untitled%2026.png"/></a></figure></details></li></ul><p id="356b136c-3a58-4f80-8a1d-ab5cecdd7cbc" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

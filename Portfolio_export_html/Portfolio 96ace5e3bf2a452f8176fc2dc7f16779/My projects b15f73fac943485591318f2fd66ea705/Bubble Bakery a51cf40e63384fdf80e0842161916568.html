@@ -1,0 +1,933 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Bubble Bakery</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a51cf40e-6338-4fdf-80e0-842161916568" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568/Character_Don.png"/></div><h1 class="page-title">Bubble Bakery</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/rocket_gray.svg" style="width:14px;height:14px"/></span>Finished</th><td>Nov 2023</td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/gear_gray.svg" style="width:14px;height:14px"/></span>Engine &amp; Language</th><td><span class="selected-value select-value-color-pink">C#</span><span class="selected-value select-value-color-purple">Unity</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/briefcase_gray.svg" style="width:14px;height:14px"/></span>Roles</th><td><span class="selected-value select-value-color-blue">Game Dev</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/tag_gray.svg" style="width:14px;height:14px"/></span>Tags</th><td><span class="selected-value select-value-color-green">2D</span><span class="selected-value select-value-color-yellow">Game Jam</span><span class="selected-value select-value-color-green">Visual Novel</span></td></tr><tr class="property-row property-row-number"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/groups_gray.svg" style="width:14px;height:14px"/></span>Team Size</th><td>5</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/clock-alternate_gray.svg" style="width:14px;height:14px"/></span>Development Period</th><td>48h</td></tr><tr class="property-row property-row-url"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesUrl"><path d="M7.69922 10.8945L8.73828 9.84863C7.91797 9.77344 7.34375 9.51367 6.91992 9.08984C5.76465 7.93457 5.76465 6.29395 6.91309 5.14551L9.18262 2.87598C10.3379 1.7207 11.9717 1.7207 13.127 2.87598C14.2891 4.04492 14.2822 5.67188 13.1338 6.82031L11.958 7.99609C12.1768 8.49512 12.2451 9.10352 12.1289 9.62988L14.0908 7.6748C15.7725 6 15.7793 3.62109 14.084 1.92578C12.3887 0.223633 10.0098 0.237305 8.33496 1.91211L5.95605 4.29785C4.28125 5.97266 4.26758 8.35156 5.96289 10.0469C6.36621 10.4434 6.90625 10.7441 7.69922 10.8945ZM8.30078 5.13184L7.26855 6.17773C8.08203 6.25293 8.66309 6.51953 9.08008 6.93652C10.2422 8.09863 10.2422 9.73242 9.08691 10.8809L6.81738 13.1504C5.66211 14.3057 4.03516 14.3057 2.87305 13.1504C1.71094 11.9883 1.71777 10.3545 2.87305 9.20605L4.04199 8.03027C3.83008 7.53125 3.75488 6.92969 3.87109 6.39648L1.91602 8.35156C0.234375 10.0264 0.227539 12.4121 1.92285 14.1074C3.61816 15.8027 5.99707 15.7891 7.67188 14.1143L10.0439 11.7354C11.7256 10.0537 11.7324 7.6748 10.0371 5.98633C9.64062 5.58301 9.10059 5.28223 8.30078 5.13184Z"></path></svg></span>Link</th><td><a href="https://kthxsayonara.itch.io/bubble-bakery" class="url-value">https://kthxsayonara.itch.io/bubble-bakery</a></td></tr></tbody></table></header><div class="page-body"><p id="884a9dd6-d903-4a95-a90b-2268a28b274e" class="">⬅️ Back to the <a href="../../Portfolio%2096ace5e3bf2a452f8176fc2dc7f16779.html"><span class="icon">🚀</span>Portfolio</a></p><ul id="65f1de7c-0f98-47ba-b412-1e817fc0bda0" class="toggle"><li><details open=""><summary>🧭 <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Quick Links</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></summary><nav id="766cb4d0-e44b-44b9-bf96-3e90a8b4a810" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fcdb3fa8-f1c4-4b26-bd83-3251b3fbf611">Concept</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#31ed7b10-1400-40c8-a19d-9bb8c1cfa4d5">Images &amp; Videos</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fb950c3c-edb1-4d08-ad26-4b7aaaac9dca">Team</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#de26a420-53b2-46fc-a3ac-a9b4a9820c20">Contributions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b1826e0a-7800-4944-9fe7-2f211fad6307">Process</a></div></nav></details></li></ul><h2 id="fcdb3fa8-f1c4-4b26-bd83-3251b3fbf611" class="block-color-blue_background">Concept</h2><hr id="7dcac617-e16b-4428-8f9c-9691654b92ef"/><div id="e02ba1c5-bcb9-46e8-b2f1-2297f6ba86e5" class="column-list"><div id="2a386913-8002-4b66-af61-b70fbc2b2621" style="width:50%" class="column"><figure id="f3fc594f-eaed-4db0-a3e7-859746c43993" class="image"><a href="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568/Untitled.png"><img style="width:1109px" src="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568/Untitled.png"/></a></figure><p id="1b86edfe-8c1f-47a7-a5e8-d820eecafd03" class="">
+</p></div><div id="50e06191-85e1-46d1-8e85-3f4eb2ae865d" style="width:50%" class="column"><p id="a45db796-8a4e-41ef-9a1f-a4225079b530" class=""><mark class="highlight-blue"><strong>Bubble Bakery</strong></mark> is a visual novel made for the <strong><strong><strong><strong><strong><strong>FemDevs</strong></strong></strong></strong></strong></strong> game jam. The themes were “Underwater” and “Christmas”, so the game is set in an underwater bakery the night before Christmas. The player experiences a cute and short story through the eyes of the bakery shopkeeper by clicking through dialogues with the customers.</p><p id="d430fb8d-565e-4b97-9539-e0fd9b728df8" class="">Bubble Bakery is in debt and the short time frame to pay them of is over, so your bakery is about to be bought by the big fast food chain Fishy Business.</p><p id="02b2e781-3a79-4bdd-a619-8d75b9c61253" class="">The team was comprised of an artist, a composer, a game designer, a narrative designer and me, the programmer.</p><p id="dc54919b-8f6c-4783-b50b-72c47d3b1682" class="">Initially, we planned on creating a “Cooking Mama” type game where the player has to cook the right food for entering customers in a given time frame. Within the game jam’s time frame, we didn’t manage to get the minigames done, that’s why we concentrated on finishing the game as a visual novel.</p><p id="adba7663-5a97-40cb-91d8-d571f4c5ed7a" class="">All team members agreed to continue working on the game after the deadline and include all the features we would love to add.</p><p id="2bb3695a-c0d7-4650-ab07-7ed0fcb4393d" class="">
+</p></div></div><h2 id="31ed7b10-1400-40c8-a19d-9bb8c1cfa4d5" class="block-color-blue_background">Images &amp; Videos</h2><hr id="08872883-7663-4f90-a3fb-4fcf12e2984a"/><div id="6dca86d4-c1ce-42a0-85d3-c5c4ebbdc087" class="column-list"><div id="b2b0551e-c07d-49d4-88a2-197160f4870f" style="width:50%" class="column"><figure id="8bec77c4-c7a8-42af-bb98-e78bab221403" class="image"><a href="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568/outside.png"><img style="width:1920px" src="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568/outside.png"/></a></figure><figure id="89f87883-1857-4a7e-93a1-7acfc6c95367" class="image"><a href="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568/cutscene.png"><img style="width:1920px" src="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568/cutscene.png"/></a></figure></div><div id="74550095-a9ad-48af-827e-4d47c2c859f4" style="width:50%" class="column"><figure id="afc159db-02b8-4f6c-9543-c9446a26e902" class="image"><a href="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568/jean.png"><img style="width:1920px" src="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568/jean.png"/></a></figure><figure id="a57185eb-f966-4f6e-a61c-85c9f5848d2b" class="image"><a href="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568/walrus.png"><img style="width:1920px" src="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568/walrus.png"/></a></figure></div></div><h2 id="fb950c3c-edb1-4d08-ad26-4b7aaaac9dca" class="block-color-blue_background">Team</h2><hr id="0c1384ec-b0f8-4ec9-b355-3e00c7bf5763"/><ul id="f7a7dd40-5ff3-4bbf-b3dd-59cdb598ab09" class="bulleted-list"><li style="list-style-type:disc">Kerstin Pfaffinger (me): Programming</li></ul><ul id="6e52c53e-680a-4cb9-80f0-0b267fff1bb8" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.linkedin.com/in/larissa-ignatz/">Larissa Ignatz</a>: Art</li></ul><ul id="f5720cef-4c5e-42a7-9bd0-6abe7b23bdc3" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.linkedin.com/in/rocio-solares-a9878a288/">Rocío Solares</a>: Narrative</li></ul><ul id="52e05ce2-6f1f-4432-908d-6c6c23ded7a9" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.linkedin.com/in/seren-hughes/">Seren Hughes</a>: Sound, music</li></ul><ul id="dc564f16-f8ec-4632-b948-8a11e7366cc3" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.linkedin.com/in/tillinettasaunders">Tilli Netta Saunders</a>: Game Design</li></ul><p id="d107601e-6d0b-496e-a003-a88ed157b675" class="">
+</p><h2 id="de26a420-53b2-46fc-a3ac-a9b4a9820c20" class="block-color-blue_background">Contributions</h2><hr id="2943b994-3af4-4aa6-abb7-089be9b0b5d4"/><p id="63393450-08e2-444a-abb8-40bce23a8dd7" class="">I was the only programmer in this project, so I did any coding tasks. These include:</p><ul id="6f710ca2-fce9-490a-9ea7-3525e83e0811" class="bulleted-list"><li style="list-style-type:disc"><a href="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568.html"><mark class="highlight-blue"><strong>Timeline</strong></mark></a><mark class="highlight-blue"><strong>: </strong></mark><mark class="highlight-default">As a visual novel is highly scripted, I wanted to create the possibility to write the whole timeline of events happening in a theater script manner. You can see an example </mark><a href="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568.html"><mark class="highlight-default">here</mark></a><mark class="highlight-default">.</mark></li></ul><ul id="bbcabf21-daff-4c0c-a65a-f157227bde43" class="bulleted-list"><li style="list-style-type:disc"><a href="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568.html"><mark class="highlight-blue"><strong>Dialogues</strong></mark></a><mark class="highlight-blue"><strong>:</strong></mark><strong><strong><strong><strong><strong><strong><strong><strong> </strong></strong></strong></strong></strong></strong></strong></strong>The heart of a visual novel is its story and characters. A textbox needs to show up with the name of the character and some dialogue. The player should be able to traverse the dialogue by clicking.</li></ul><ul id="f7eac6f1-9665-4326-9f31-e9d7f1786ddc" class="bulleted-list"><li style="list-style-type:disc"><a href="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568.html"><mark class="highlight-blue"><strong>Movement</strong></mark></a><mark class="highlight-blue"><strong>:</strong></mark><strong><strong><strong><strong><strong><strong><strong><strong> </strong></strong></strong></strong></strong></strong></strong></strong>Characters enter and exit the bakery when the timeline requests it.</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2cc8c7dc-a99d-470a-9db7-cc6455d59e5e"><div style="font-size:1.5em"><span class="icon">💬</span></div><div style="width:100%">You can find this game’s repository <a href="https://github.com/gringames/bubble-bakery">here</a>.</div></figure><p id="7c00cab2-f3ff-4c69-bc07-5c9c4779290c" class="">
+</p><h2 id="b1826e0a-7800-4944-9fe7-2f211fad6307" class="block-color-blue_background">Process</h2><hr id="737d1dbc-f2f7-4f63-a889-7c107e46c6ae"/><p id="a97b0afd-5620-45d7-8c5a-87ca2796a897" class=""><mark class="highlight-blue"><strong>Timeline Parsing</strong></mark></p><p id="f3928cd2-8ad8-4174-9266-49fd8e14dccf" class="">Here is a (shortened) example of a timeline. It is plain text in a .txt file:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a50f866b-6bcf-497d-bf5d-92cb9e65c37a" class="code"><code class="language-Plain Text">ENTER§cthullu
+
+# Dialogue with Cthullu
+TALK§Cthullu§Oh, good mornin’. I was just commentin’ how nice yer bakery looks. The sugar taste in the water is delightful, too.
+TALK§You§You were? I mean, thank you so much, sir. I thought your kind disliked glucose.
+TALK§Cthullu§I didn’ use to eat cookies when I was workin’. I left my job, though. I got tired of imaginin’ new nightmares for the earthlings.
+TALK§Cthullu§Ye won’t believe the crazy ideas those earthlanders come up with on their own. ‘Twas hard to keep it up, ye know?
+TALK§You§It had to be difficult.
+TALK§Cthullu§Yeah. And I didn’t even like it. So I left tryin’ to find a cultist prone to announce my comin’ and decided to become a dad!
+TALK§You§A… dad?
+
+ENTER§s1§s2§s3§s4
+
+TALK§Seahorse nº1§Hey Cuthuly! Can we have some muffins?!
+TALK§Seahorse nº2§Cathulluu, I want a cookie!
+# ... [shortened here]
+TALK§Seahorses§Thank you for the muffins, baker!
+
+EXIT§cthullu§s1§s2§s3§s4</code></pre><p id="a8a2bab5-6e8c-4b66-a0b8-2a135e7e1f83" class="">Before writing any code, I defined the possible actions I need to cover in the timeline. These were: talking, moving into and out of the bakery and ordering. As I said in the <a href="Bubble%20Bakery%20a51cf40e63384fdf80e0842161916568.html">concept section</a>, there are no orders in the final submission, but technically they are a possible action. Now that I had laid out all the actions, I planned on how to encode them in the text file. Each action would end up in a separate line to make things easier in code. The script would get a reference to the timeline of the current scene and read this very file line by line. A line could either start with a comment, indicated with a <code>#</code> at the start, or with one of the possible actions. Comment lines as well as empty lines are simply skipped by the parser. This makes it easier to structure the file.</p><p id="cb9e9d6a-8e25-4a37-9016-401877bc2493" class="">An action line always starts with the action type, being <code>TALK</code>, <code>ENTER</code>, <code>EXIT</code> or <code>ORDER</code>, respectively. I also added a <code>STOP</code> command that immediately stops the timeline execution when found in any line. This made it a lot easier to test parts of the timeline without having to comment out or remove the following lines.</p><p id="189f90c1-7213-4ce5-8476-7bc49996fcfe" class="">After the action type, the name of the character doing that action follows. They are separated by <code>§</code> as this will never occur in any dialogue or name. I intuitively split the line at any whitespace <code>&quot; &quot;</code> initially, but I quickly ran into problems there, because I needed to have the text content of the dialogues in the <code>TALK</code> action in one single string but the parser would split up all words because of the spaces.</p><p id="b0469630-56bc-47ae-80fc-744600408804" class="">Now we have extracted the action type and the name out of the line. If there is anything left in the line, it is stored in an extra array called <code>arguments</code>.</p><p id="9501207f-e6a7-4969-b26e-3fe5bec994ce" class="">Now to the action processing: I created an interface called <code>Action</code> which had an abstract method <code>Handle(string[] arguments)</code>. I then created a class for each Action implementing that interface and the <code>Handle()</code> method. Depending on the extracted action type, the parser delegates character name and arguments to the respective action object.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7b2b2d55-902e-45d6-bc3c-c3c226325c44"><div style="font-size:1.5em"><span class="icon">💬</span></div><div style="width:100%">In the current update of the game, I changed this implementation. I created a <code>Character</code> class with public methods for <code>Move()</code>, <code>Talk()</code> and <code>Order()</code>. I get the respective character object using a mapping function that takes in the character’s name and returns the corresponding character instance. Depending on the action, one of the functions is called on the character directly.</div></figure><p id="f47b9d10-717c-4839-8e6e-9812a69f3924" class="">Depending on the action, the timeline might have to wait for the action to finish before processing the next line. In the game jam version, I did this by providing a public method <code>HandleNextLine()</code> in the <code>TimelineParser.cs</code> which can be called by the action objects as soon as they are done with their action. In some cases, I additionally used events the actions subscribed to. That was needed, because the Movement was implemented using coroutines and the dialogue had to wait for user input.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7b4aa4c2-0073-466d-90a8-f7a8161802b9"><div style="font-size:1.5em"><span class="icon">💬</span></div><div style="width:100%">I will probably change this later to use async methods.</div></figure><p id="bedfd3f2-4d28-4ce7-b7c5-b2099515591d" class="">Here you can see the most important methods of the <code>TimelineParser.cs</code> (game jam version): </p><ul id="6037e419-76c1-4d6c-9616-84bfb30731b5" class="toggle"><li><details open=""><summary><em>[Script]</em> TimelineParser.cs (shortened)</summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6b4c3e53-a1c0-44ca-9272-07c0dfbd3e88" class="code"><code class="language-C#">using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+namespace Timeline
+{
+    public class TimelineParser : MonoBehaviour
+    {
+        [Header(&quot;Actions&quot;)] [SerializeField] private MoveAction moveAction;
+        [SerializeField] private OrderAction orderAction;
+        [SerializeField] private TalkAction talkAction;
+
+        [Header(&quot;File&quot;)] [SerializeField] private TextAsset timelineFile;
+        [SerializeField] private string commentCharacter = &quot;#&quot;;
+        [SerializeField] private string splitCharacter = &quot;§&quot;;
+        private string[] _lines;
+
+        // ACTIONS
+        private const string ENTER = &quot;ENTER&quot;;
+        private const string TALK = &quot;TALK&quot;;
+        private const string EXIT = &quot;EXIT&quot;;
+        private const string ORDER = &quot;ORDER&quot;;
+        private const string STOP = &quot;STOP&quot;;
+
+        // PARSING
+        private int _lineIndex = 0;
+        private int _lineCount;
+
+
+        private void Awake()
+        {
+            InitializeTimeline();
+
+            if (_lines[0] == STOP) return;
+
+            ParseNextLine();
+        }
+
+        private void InitializeTimeline()
+        {
+            _lines = SplitTextAtNewLine(timelineFile.text);
+            _lineCount = _lines.Length;
+        }
+
+        private static string[] SplitTextAtNewLine(string text)
+        {
+            return text.Split(new[] {Environment.NewLine},
+                StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public void ParseNextLine()
+        {
+            if (_lineIndex == _lineCount)
+            {
+                Debug.Log(&quot;end of timeline reached&quot;);
+                SceneManager.LoadScene(2);
+                return;
+            }
+
+            var line = _lines[_lineIndex];
+            _lineIndex++;
+
+            // skip line if it is a comment
+            if (SkipLine(line))
+            {
+                ParseNextLine();
+            }
+            else
+            {
+                HandleLine(line);
+            }
+        }
+
+        private bool SkipLine(string line)
+        {
+            return line.StartsWith(commentCharacter)
+                   || line.StartsWith(&quot; &quot;)
+                   || line.Length == 0;
+        }
+
+        private void HandleLine(string line)
+        {
+            string[] contents = line.Split(splitCharacter);
+
+            var action = contents[0];
+            if (action == STOP) return;
+            
+            var arguments = GetArguments(contents);
+            
+            
+            switch (action)
+            {
+                case ENTER:
+                    arguments = AddTypeToMoveActionArguments(arguments, true);
+                    moveAction.Handle(arguments);
+                    break;
+                case EXIT:
+                    arguments = AddTypeToMoveActionArguments(arguments, false);
+                    moveAction.Handle(arguments);
+                    break;
+                case ORDER:
+                    orderAction.Handle(arguments);
+                    break;
+                case TALK:
+                    arguments = ConvertAllTalkLinesToArguments(arguments);
+                    talkAction.Handle(arguments);
+                    break;
+                default:
+                    Debug.LogError($&quot;unknown action: {action}&quot;);
+                    break;
+            }
+        }
+
+		// helper functions
+		// ...
+
+		}
+}</code></pre></details></li></ul><p id="813f70c2-df5c-487c-8e05-96e8dd7d201d" class="">
+</p><p id="df0e9ea5-1368-4aac-a453-57a72f1d3542" class="">
+</p><p id="e373b2b1-b841-45f5-9eb5-e22afe683cd3" class=""><mark class="highlight-blue"><strong>Dialogue Scrolling and Display</strong></mark></p><p id="1afcb030-04fe-4f5a-868c-7ff16e17978e" class="">The requirements for the dialogue were as follows:</p><ol type="1" id="eda8aed6-88d5-4e7d-b019-94bcb7f742f5" class="numbered-list" start="1"><li>Show the textbox with the correct character name.</li></ol><p id="eff25d2a-a5d4-4089-b8f5-fde8bc15257b" class="">Showing the textbox was simply done by setting the textbox object active. I created an extra class for managing the dialogue, holding references to both the text object holding the character’s name and the one containing the actual dialogue part. The text of the name field is set to the character name passed to the <code>TALK</code>&#x27;s <code>Handle()</code> method.</p><ol type="1" id="254f393e-9590-4beb-9e00-860390f6bada" class="numbered-list" start="2"><li>“Animate” the text: The contents appear letter by letter. This can be skipped by the player clicking the left mouse button.</li></ol><p id="70367021-5b58-4729-9914-43e8bbbed0b5" class="">In the <code>DialogueManager.cs</code> I created a coroutine typing out each <code>char</code> of the passed dialogue string at a fixed speed. If the player presses the mouse button, all coroutines are stopped and the text is set to the whole content passed to the method.</p><ol type="1" id="7620ae5f-e589-45fc-9721-931ac01e85c0" class="numbered-list" start="3"><li>When the current dialogue content is written out fully, the player needs to click to go to the next part.</li></ol><p id="3071c78f-2b3e-4a24-84ce-969faaa5fc5b" class="">For this, I again check for mouse input. If a click happens, I tell the <code>TimelineParser.cs</code> to continue parsing.</p><ul id="09d1cad4-96e9-47d8-b57f-685de578883d" class="toggle"><li><details open=""><summary><em><em><em><em><em><em>[Script] </em></em></em></em></em></em>DialogueManager.cs</summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8194ae90-84be-40ba-a355-81a0d6da7173" class="code"><code class="language-C#">using System;
+using System.Collections;
+using TMPro;
+using UnityEngine;
+
+namespace Dialogues
+{
+    public class DialogueManager : MonoBehaviour
+    {
+        [Header(&quot;TMP Objects&quot;)] [SerializeField]
+        private GameObject dialoguePanel;
+
+        [SerializeField] private TextMeshProUGUI dialogueName;
+        [SerializeField] private TextMeshProUGUI dialogueText;
+
+
+        [Header(&quot;Text Scrolling&quot;)] [SerializeField]
+        private float timeBetweenLetters = .01f;
+
+        private string _currentContent;
+
+        public Action OnFinishedTyping;
+        
+        
+        public void ShowPanel()
+        {
+            dialogueName.text = &quot;&quot;;
+            dialogueText.text = &quot;&quot;;
+            dialoguePanel.SetActive(true);
+        }
+
+        public void HidePanel()
+        {
+            dialoguePanel.SetActive(false);
+        }
+
+        public void SetName(string characterName)
+        {
+            dialogueName.text = characterName;
+        }
+
+        
+        public void AnimateContent(string content)
+        {
+            _currentContent = content;
+            dialogueText.text = string.Empty;
+            StartCoroutine(nameof(Type), content);
+        }
+
+        public void SkipTyping()
+        {
+            StopAllCoroutines();
+            dialogueText.text = _currentContent;
+            
+            OnFinishedTyping?.Invoke();
+        }
+
+				// inspired by: https://www.youtube.com/watch?v=8oTYabhj248
+        private IEnumerator Type(string content)
+        {
+            foreach (var c in content.ToCharArray())
+            {
+                dialogueText.text += c;
+                yield return new WaitForSeconds(timeBetweenLetters);
+            }
+            
+            OnFinishedTyping?.Invoke();
+        }
+
+    }
+}</code></pre><p id="a5c569ff-4092-4312-bb74-a12542cddda5" class="">
+</p></details></li></ul><p id="17b94534-b9e7-4f46-b699-8e220dfdd439" class="">
+</p><p id="8040afb3-15dd-4070-9ac0-a1e92986f5eb" class="">
+</p><p id="40008111-8d9e-440e-ad9e-ec20a15cd72c" class=""><mark class="highlight-blue"><strong>Movement</strong></mark></p><p id="7618457a-0601-4df8-9fdf-eafb271a404b" class="">There are two possible movements a character can perform: Entering the bakery and exiting it. Both is handled by the <code>MoveAction.cs</code> which takes a boolean determining if the character should go in or out. The <code>TimelineParser.cs</code> adds either <code>true</code> or <code>false</code> to the <code>arguments[]</code> of the action, depending on whether it read <code>EXIT</code> or <code>ENTER</code>, respectively.</p><p id="c2dd412f-c762-4ed9-b6ab-a38e1f7a6a7c" class="">In the scene, I placed 3 transforms; one in the bakery in front of the counter and 1 at each side of the screen. For <code>ENTER</code>, the corresponding character is positioned at the right point and moved towards the center point. For <code>EXIT</code>, the character is moved from the center to the left point.</p><p id="30542360-d6f9-4255-bcbf-0daa7e716d1e" class="">For the movement, I used <code>MoveTowards()</code> in a coroutine, so I get a smoothly interpolated movement. As soon as the character reached a position close enough to the center point, I tell the <code>TimelineParser.cs</code> to continue parsing.</p><p id="eb741dd9-dd5c-4d4c-ad28-e63528fcdbbe" class="">I need the parser to wait until the movement is finished, otherwise i.e. the dialogue could start without the character having arrived at the counter.</p><p id="80e0a755-92ef-4ae5-b15a-b0951743f590" class="">Here is how the movement is implemented:</p><ul id="b678ea3c-5eca-49fe-8501-e88b1231e203" class="toggle"><li><details open=""><summary><em>[Script] </em>MovingObject.cs</summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="37bb44a3-ac59-4c53-8307-b1c4777494be" class="code"><code class="language-C#">using System;
+using System.Collections;
+using UnityEngine;
+
+public class MovingObject : MonoBehaviour
+{
+    public Action OnFinishedMoving;
+
+    [Header(&quot;Properties&quot;)] [SerializeField] private float speed = 0.1f;
+
+    private const float Threshold = 0.1f;
+
+
+    public void Enter(Transform entryPoint, Transform targetPoint)
+    {
+        transform.position = entryPoint.position;
+        StartCoroutine(nameof(MoveTo), targetPoint);
+    }
+
+    public void Exit(Transform exitPoint)
+    {
+        StartCoroutine(nameof(MoveTo), exitPoint);
+    }
+
+    private IEnumerator MoveTo(Transform end)
+    {
+        var endPoint = end.position;
+
+        while (!AreCloseEnough(transform.position, endPoint))
+        {
+            transform.position = Vector3.MoveTowards(transform.position, endPoint, speed);
+            yield return new WaitForFixedUpdate();
+        }
+    
+        OnFinishedMoving?.Invoke();
+    }
+
+    private static bool AreCloseEnough(Vector3 pos, Vector3 goalPos)
+    {
+        return Mathf.Abs(pos.x - goalPos.x) &lt; Threshold;
+    }
+}</code></pre></details></li></ul><p id="e52a8490-0181-4e3e-b657-1dad6d42b8e2" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
